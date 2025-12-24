@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ariya Abdullah - Music Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Poppins:wght@300;400;500;600&family=Bebas+Neue&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --gold: #ffd700;
+            --light: #f5f5f5;
+            --vinyl-black: #0a0a0a;
+            --shadow: rgba(233, 69, 96, 0.3);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: var(--light);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(233, 69, 96, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
+            animation: bgPulse 10s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes bgPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Logo in top left corner */
+        .logo {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            width: 80px;
+            height: auto;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 6px 12px rgba(233, 69, 96, 0.6));
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                width: 60px;
+                top: 15px;
+                left: 15px;
+            }
+        }
+
+        /* Header with Vinyl Player */
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            animation: fadeInDown 1s ease;
+        }
+
+        .vinyl-player-container {
+            position: relative;
+            max-width: 400px;
+            margin: 0 auto 2rem;
+        }
+
+        .vinyl-record {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            position: relative;
+            animation: spinVinyl 8s linear infinite;
+        }
+
+        @keyframes spinVinyl {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .vinyl-disc {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: 
+                radial-gradient(circle at center, var(--vinyl-black) 0%, var(--vinyl-black) 20%, 
+                #1a1a1a 20%, #1a1a1a 21%, var(--vinyl-black) 21%, var(--vinyl-black) 40%,
+                #2a2a2a 40%, #2a2a2a 41%, var(--vinyl-black) 41%, var(--vinyl-black) 60%,
+                #1a1a1a 60%, #1a1a1a 61%, var(--vinyl-black) 61%, var(--vinyl-black) 80%,
+                #2a2a2a 80%, #2a2a2a 81%, var(--vinyl-black) 81%);
+            box-shadow: 
+                0 0 0 3px #0a0a0a,
+                0 0 30px rgba(0, 0, 0, 0.8),
+                inset 0 0 50px rgba(255, 255, 255, 0.05);
+            position: relative;
+        }
+
+        .vinyl-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .vinyl-label-text {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.2rem;
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .vinyl-hole {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+        }
+
+        header h1 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: clamp(3rem, 8vw, 6rem);
+            letter-spacing: 0.1em;
+            background: linear-gradient(45deg, var(--accent), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px var(--shadow);
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            font-style: italic;
+            color: var(--gold);
+            opacity: 0.9;
+        }
+
+        /* Album Grid */
+        .album-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+            padding: 2rem;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        @media (min-width: 768px) {
+            .album-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .album-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Album Cover Design */
+        .album-card {
+            position: relative;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            perspective: 1000px;
+        }
+
+        .album-cover {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 
+                0 10px 40px rgba(0, 0, 0, 0.5),
+                inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .album-card:hover .album-cover {
+            transform: translateY(-15px) rotateY(10deg);
+            box-shadow: 
+                0 25px 60px rgba(0, 0, 0, 0.7),
+                0 0 40px var(--shadow);
+        }
+
+        .album-cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.8s;
+        }
+
+        .album-card:hover .album-cover::before {
+            left: 100%;
+        }
+
+        .album-artwork {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, 
+                rgba(233, 69, 96, 0.3), 
+                rgba(22, 33, 62, 0.8));
+        }
+
+        .album-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 20px var(--accent));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .album-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            letter-spacing: 0.05em;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .album-artist {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--light);
+            opacity: 0.9;
+        }
+
+        /* Modal - Lyric Style */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: block;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 3rem 2rem;
+            animation: slideUp 0.5s ease;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(22, 33, 62, 0.95));
+            border-radius: 20px;
+            border: 2px solid rgba(233, 69, 96, 0.3);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-btn {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px var(--shadow);
+        }
+
+        .close-btn:hover {
+            transform: rotate(90deg) scale(1.1);
+            background: var(--gold);
+        }
+
+        /* Lyric Paper Style */
+        .lyric-paper {
+            background: 
+                linear-gradient(to right, rgba(255, 215, 0, 0.1) 1px, transparent 1px),
+                linear-gradient(rgba(22, 33, 62, 0.8), rgba(22, 33, 62, 0.8));
+            background-size: 100% 2rem;
+            padding: 3rem 2rem;
+            border-radius: 10px;
+            box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .lyric-paper::before {
+            content: '';
+            position: absolute;
+            left: 3rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--accent);
+            opacity: 0.3;
+        }
+
+        .lyric-content h2 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 2rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .lyric-content p,
+        .lyric-content .lyric-text {
+            font-family: 'Courier Prime', monospace;
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            line-height: 2;
+            color: var(--light);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        /* Profile Section */
+        .profile-section {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .profile-image {
+            max-width: 350px;
+            width: 100%;
+            border-radius: 20px;
+            margin: 2rem auto;
+            display: block;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 0 3px var(--accent),
+                0 0 30px var(--shadow);
+            border: 5px solid var(--primary);
+        }
+
+        /* Audio Player - Vinyl Style */
+        .vinyl-audio-player {
+            position: sticky;
+            top: 2rem;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(22, 33, 62, 0.95));
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 2px solid var(--accent);
+            box-shadow: 0 10px 40px var(--shadow);
+            backdrop-filter: blur(10px);
+        }
+
+        .vinyl-player-mini {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .mini-vinyl {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: 
+                radial-gradient(circle at center, var(--vinyl-black) 0%, var(--vinyl-black) 30%, 
+                #1a1a1a 30%, #1a1a1a 32%, var(--vinyl-black) 32%);
+            position: relative;
+            flex-shrink: 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .mini-vinyl.playing {
+            animation: spinVinyl 4s linear infinite;
+        }
+
+        .mini-vinyl-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+        }
+
+        .mini-vinyl-hole {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--vinyl-black);
+        }
+
+        .audio-info {
+            flex: 1;
+        }
+
+        .now-playing {
+            font-size: 0.9rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .audio-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--gold));
+            width: 0%;
+            transition: width 0.1s;
+        }
+
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .control-btn {
+            width: 40px;
+            height: 40px;
+            background: rgba(233, 69, 96, 0.3);
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .control-btn:hover {
+            background: var(--accent);
+            transform: scale(1.1);
+        }
+
+        .control-btn.play-pause {
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+        }
+
+        .volume-control {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .volume-slider {
+            flex: 1;
+            height: 4px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            outline: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        /* Project Gallery */
+        .project-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tab-btn {
+            padding: 1rem 2rem;
+            background: rgba(233, 69, 96, 0.2);
+            border: 2px solid var(--accent);
+            border-radius: 10px;
+            color: var(--light);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Courier Prime', monospace;
+        }
+
+        .tab-btn:hover,
+        .tab-btn.active {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px var(--shadow);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .project-gallery img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s;
+            cursor: pointer;
+            border: 3px solid rgba(233, 69, 96, 0.3);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-gallery img:hover {
+            transform: scale(1.05) rotate(2deg);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .project-description {
+            font-family: 'Courier Prime', monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent);
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            padding: 2rem 0;
+        }
+
+        .contact-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--light);
+            transition: all 0.3s;
+        }
+
+        .contact-link:hover {
+            transform: translateY(-10px);
+        }
+
+        .contact-icon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            box-shadow: 0 10px 40px var(--shadow);
+            transition: all 0.3s;
+        }
+
+        .contact-link:hover .contact-icon {
+            box-shadow: 0 20px 60px var(--shadow);
+            transform: rotate(5deg);
+        }
+
+        .contact-label {
+            font-weight: 600;
+            font-size: 1.2rem;
+            font-family: 'Courier Prime', monospace;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            header {
+                padding: 2rem 0;
+            }
+
+            .vinyl-record {
+                width: 200px;
+                height: 200px;
+            }
+
+            .vinyl-label {
+                width: 80px;
+                height: 80px;
+            }
+
+            .vinyl-label-text {
+                font-size: 0.9rem;
+            }
+
+            .modal-content {
+                padding: 2rem 1rem;
+            }
+
+            .close-btn {
+                top: 1rem;
+                right: 1rem;
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+
+            .lyric-paper {
+                padding: 2rem 1rem;
+            }
+
+            .lyric-content p {
+                padding: 0 1rem;
+            }
+
+            .contact-icon {
+                width: 100px;
+                height: 100px;
+                font-size: 3rem;
+            }
+
+            .vinyl-player-mini {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Flipbook Embed */
+        .flipbook-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 75%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .flipbook-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo -->
+    <img src="Warna Logo Brain Academy Online_real_PNG WARNA.png" alt="logo" class="logo">
+
+    <div class="container">
+        <header>
+            <div class="vinyl-player-container">
+                <div class="vinyl-record">
+                    <div class="vinyl-disc">
+                        <div class="vinyl-label">
+                            <div class="vinyl-label-text">ARIYA<br>ABDULLAH</div>
+                        </div>
+                        <div class="vinyl-hole"></div>
+                    </div>
+                </div>
+            </div>
+            <h1>ARIYA ABDULLAH</h1>
+            <p class="subtitle">A Musical Journey Through Life</p>
+        </header>
+
+        <div class="album-grid">
+            <!-- Album 1: Who is Behind This? -->
+            <div class="album-card" onclick="openModal('modal1')">
+                <div class="album-cover">
+                    <div class="album-artwork">
+                        <div class="album-icon">🎭</div>
+                        <div class="album-title">Who is Behind This?</div>
+                        <div class="album-artist">Ariya Abdullah</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Album 2: My Projects -->
+            <div class="album-card" onclick="openModal('modal2')">
+                <div class="album-cover">
+                    <div class="album-artwork">
+                        <div class="album-icon">🎨</div>
+                        <div class="album-title">My Projects</div>
+                        <div class="album-artist">Ariya Abdullah</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Album 3: Learning Journey -->
+            <div class="album-card" onclick="openModal('modal3')">
+                <div class="album-cover">
+                    <div class="album-artwork">
+                        <div class="album-icon">📚</div>
+                        <div class="album-title">Learning Journey</div>
+                        <div class="album-artist">Ariya Abdullah</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Album 4: Future Dreams -->
+            <div class="album-card" onclick="openModal('modal4')">
+                <div class="album-cover">
+                    <div class="album-artwork">
+                        <div class="album-icon">🌟</div>
+                        <div class="album-title">Future Dreams</div>
+                        <div class="album-artist">Ariya Abdullah</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Album 5: Contact -->
+            <div class="album-card" onclick="openModal('modal5')">
+                <div class="album-cover">
+                    <div class="album-artwork">
+                        <div class="album-icon">📞</div>
+                        <div class="album-title">Contact</div>
+                        <div class="album-artist">Ariya Abdullah</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 1: Who is Behind This? -->
+    <div id="modal1" class="modal">
+        <button class="close-btn" onclick="closeModal('modal1')">&times;</button>
+        <div class="modal-content">
+            <div class="vinyl-audio-player">
+                <div class="vinyl-player-mini">
+                    <div class="mini-vinyl" id="miniVinyl1">
+                        <div class="mini-vinyl-center">
+                            <div class="mini-vinyl-hole"></div>
+                        </div>
+                    </div>
+                    <div class="audio-info">
+                        <div class="now-playing">♪ Now Playing</div>
+                        <div class="audio-title">Who is Behind This?</div>
+                        <div class="progress-bar" onclick="seekAudio(event, 'audio1')">
+                            <div class="progress" id="progress1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="audio-controls">
+                    <button class="control-btn play-pause" onclick="toggleAudio('audio1', 1)">
+                        <span id="playIcon1">▶</span>
+                    </button>
+                    <div class="volume-control">
+                        <span>🔊</span>
+                        <input type="range" class="volume-slider" min="0" max="100" value="70" 
+                               onchange="changeVolume('audio1', this.value)">
+                    </div>
+                </div>
+            </div>
+            <audio id="audio1" loop></audio>
+
+            <div class="lyric-paper">
+                <div class="lyric-content profile-section">
+                    <h2>Ariya Abdullah</h2>
+                    <img src="https://drive.google.com/thumbnail?id=1nueaaufb41yQhG8bwnPGg7q4PIN_zDLX&sz=w1000" 
+                         alt="Ariya Abdullah" class="profile-image">
+                    
+                    <div class="lyric-text">
+                        <p>Saya seorang pelajar tingkat SMA di tahun 2025/2026.</p>
+                        <p>Aku menyukai segalanya tentang dunia dan seisinya,</p>
+                        <p>khususnya musik dan sains.</p>
+                        <p>Saya sedang berusaha untuk meningkatkan passion saya</p>
+                        <p>di bidang AI & Programmer melalui BAO Skill Up.</p>
+                        <p>Selain itu, fisika dan matematika menjadi favorit saya.</p>
+                        <p>Beberapa penelitian di bidang sains pernah saya lakukan.</p>
+                        <p>Saya juga pandai di bidang public speaking dan kepemimpinan.</p>
+                        <br>
+                        <p>Website ini akan menunjukkan sedikit dari hidup saya,</p>
+                        <p>bagaimana cara saya mengeksplor dunia dan kemampuan saya</p>
+                        <p>dimulai dari sains hingga AI & Programmer.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: My Projects -->
+    <div id="modal2" class="modal">
+        <button class="close-btn" onclick="closeModal('modal2')">&times;</button>
+        <div class="modal-content">
+            <div class="vinyl-audio-player">
+                <div class="vinyl-player-mini">
+                    <div class="mini-vinyl" id="miniVinyl2">
+                        <div class="mini-vinyl-center">
+                            <div class="mini-vinyl-hole"></div>
+                        </div>
+                    </div>
+                    <div class="audio-info">
+                        <div class="now-playing">♪ Now Playing</div>
+                        <div class="audio-title">My Projects</div>
+                        <div class="progress-bar" onclick="seekAudio(event, 'audio2')">
+                            <div class="progress" id="progress2"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="audio-controls">
+                    <button class="control-btn play-pause" onclick="toggleAudio('audio2', 2)">
+                        <span id="playIcon2">▶</span>
+                    </button>
+                    <div class="volume-control">
+                        <span>🔊</span>
+                        <input type="range" class="volume-slider" min="0" max="100" value="70" 
+                               onchange="changeVolume('audio2', this.value)">
+                    </div>
+                </div>
+            </div>
+            <audio id="audio2" loop></audio>
+
+            <div class="lyric-paper">
+                <div class="lyric-content">
+                    <h2>My Projects</h2>
+                    
+                    <div class="project-tabs">
+                        <button class="tab-btn active" onclick="showTab('school')">Project at School</button>
+                        <button class="tab-btn" onclick="showTab('bao')">Project at BAO Skill Up</button>
+                        <button class="tab-btn" onclick="showTab('sains')">Sains Project</button>
+                    </div>
+
+                    <!-- School Tab -->
+                    <div id="school" class="tab-content active">
+                        <div class="project-gallery">
+                            <img src="https://drive.google.com/thumbnail?id=1vAOtTiTEXOWeTHWxvKK-q6KU6_paRFcH&sz=w800" alt="School Project 1">
+                            <img src="https://drive.google.com/thumbnail?id=1d34ufejZ9-dp5rOU1D6Kv8SVgaSCemn1&sz=w800" alt="School Project 2">
+                            <img src="https://drive.google.com/thumbnail?id=1ZUb0hseWljSI2x9DniF9VV7669Wt09m2&sz=w800" alt="School Project 3">
+                        </div>
+                        <div class="project-description">
+                            <p>Kepemimpinan dan public speaking di lingkungan sekolah menjadi kebiasaan saya sehari-hari.</p>
+                            <p>Menjadi pengajar di salah satu instansi tingkat SD/sederajat di bulan September-Oktober di bidang keagamaan kelas 6.</p>
+                            <p>Saya sering membuat event besar seperti event perkemahan yang diikuti oleh lebih dari 1200 peserta.</p>
+                            <p>Dengan kerja sama tim serta keterampilan kepemimpinan saya, semua itu berjalan dengan lancar.</p>
+                        </div>
+                    </div>
+
+                    <!-- BAO Tab -->
+                    <div id="bao" class="tab-content">
+                        <div class="project-gallery">
+                            <img src="https://drive.google.com/thumbnail?id=1K_zb0vQytZRtzd7TvPTWyeyXDcz6R0ef&sz=w800" alt="BAO Project 1">
+                            <img src="https://drive.google.com/thumbnail?id=1NCVYmmbwxrqMUyHaC9PuxcSbgUrdmyOr&sz=w800" alt="BAO Project 2">
+                        </div>
+                        <div class="project-description">
+                            <p>BAO Skill Up mengajarkan untuk memanfaatkan AI dalam kehidupan sehari-hari.</p>
+                            <p>AI ini menghasilkan animasi menarik serta tampilan website yang bisa kita kembangkan lagi.</p>
+                        </div>
+                    </div>
+
+                    <!-- Sains Tab -->
+                    <div id="sains" class="tab-content">
+                        <div class="flipbook-container">
+                            <iframe src="https://heyzine.com/flip-book/c1783423d9.html" allowfullscreen></iframe>
+                        </div>
+                        <div class="project-description">
+                            <p>Esai dengan tema sains sering saya kerjakan untuk mengikuti lomba,</p>
+                            <p>salah satunya tentang keselamatan dan kesehatan kerja.</p>
+                            <p>Pembuatan esai membutuhkan keterampilan menulis yang baik</p>
+                            <p>dan pemahaman sains yang sangat kuat.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3: Learning Journey -->
+    <div id="modal3" class="modal">
+        <button class="close-btn" onclick="closeModal('modal3')">&times;</button>
+        <div class="modal-content">
+            <div class="vinyl-audio-player">
+                <div class="vinyl-player-mini">
+                    <div class="mini-vinyl" id="miniVinyl3">
+                        <div class="mini-vinyl-center">
+                            <div class="mini-vinyl-hole"></div>
+                        </div>
+                    </div>
+                    <div class="audio-info">
+                        <div class="now-playing">♪ Now Playing</div>
+                        <div class="audio-title">Learning Journey</div>
+                        <div class="progress-bar" onclick="seekAudio(event, 'audio3')">
+                            <div class="progress" id="progress3"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="audio-controls">
+                    <button class="control-btn play-pause" onclick="toggleAudio('audio3', 3)">
+                        <span id="playIcon3">▶</span>
+                    </button>
+                    <div class="volume-control">
+                        <span>🔊</span>
+                        <input type="range" class="volume-slider" min="0" max="100" value="70" 
+                               onchange="changeVolume('audio3', this.value)">
+                    </div>
+                </div>
+            </div>
+            <audio id="audio3" loop></audio>
+
+            <div class="lyric-paper">
+                <div class="lyric-content">
+                    <h2>Perjalanan Bersama BAO Skill Up</h2>
+                    <div class="lyric-text">
+                        <p>BAO Skill Up membuat saya lebih melek teknologi,</p>
+                        <p>ilmu pemanfaatan AI untuk kehidupan sehari-hari diajarkan secara spesifik,</p>
+                        <p>mulai bagaimana cara membuat prompt yang benar,</p>
+                        <p>memberi spesifikasi website AI,</p>
+                        <p>dan mengajarkan bagaimana cara kita untuk memanfaatkan AI dalam kehidupan sehari-hari.</p>
+                        <br>
+                        <p>Selain itu, di BAO skill up juga diajarkan dasar-dasar programing</p>
+                        <p>seperti html, css. dan java script.</p>
+                        <p>Pengajaran programing tersebut di implementasikan dalam AI</p>
+                        <p>sehingga kita dapat membuat coding dengan sangat mudah hanya melalui AI</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 4: Future Dreams -->
+    <div id="modal4" class="modal">
+        <button class="close-btn" onclick="closeModal('modal4')">&times;</button>
+        <div class="modal-content">
+            <div class="vinyl-audio-player">
+                <div class="vinyl-player-mini">
+                    <div class="mini-vinyl" id="miniVinyl4">
+                        <div class="mini-vinyl-center">
+                            <div class="mini-vinyl-hole"></div>
+                        </div>
+                    </div>
+                    <div class="audio-info">
+                        <div class="now-playing">♪ Now Playing</div>
+                        <div class="audio-title">Future Dreams</div>
+                        <div class="progress-bar" onclick="seekAudio(event, 'audio4')">
+                            <div class="progress" id="progress4"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="audio-controls">
+                    <button class="control-btn play-pause" onclick="toggleAudio('audio4', 4)">
+                        <span id="playIcon4">▶</span>
+                    </button>
+                    <div class="volume-control">
+                        <span>🔊</span>
+                        <input type="range" class="volume-slider" min="0" max="100" value="70" 
+                               onchange="changeVolume('audio4', this.value)">
+                    </div>
+                </div>
+            </div>
+            <audio id="audio4" loop></audio>
+
+            <div class="lyric-paper">
+                <div class="lyric-content">
+                    <h2>I Will Go Back on This in the Future</h2>
+                    <div class="lyric-text">
+                        <p>5 semester telah saya lalui dengan berusaha untuk meningkatkan nilai,</p>
+                        <p>1 semester saya lalui untuk belajar utbk dengan ekstra.</p>
+                        <br>
+                        <p>Fakultas teknik UGM/ITS/Undip menjadi impian saya sejak lama.</p>
+                        <p>Mechanical engineering atau biomedical engineering</p>
+                        <p>selalu terlintas di dalam doa saya.</p>
+                        <br>
+                        <p>Saya berjanji ketika di tahun depan saya kembali ke website ini,</p>
+                        <p>saya sudah mencapai cita-cita saya untuk kuliah di kampus impian saya</p>
+                        <p>di salah satu prodi impian saya tersebut.</p>
+                        <br>
+                        <p>Pray for me and I will pray for u so that ur dreams come true,</p>
+                        <p>Aamiin.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 5: Contact -->
+    <div id="modal5" class="modal">
+        <button class="close-btn" onclick="closeModal('modal5')">&times;</button>
+        <div class="modal-content">
+            <div class="vinyl-audio-player">
+                <div class="vinyl-player-mini">
+                    <div class="mini-vinyl" id="miniVinyl5">
+                        <div class="mini-vinyl-center">
+                            <div class="mini-vinyl-hole"></div>
+                        </div>
+                    </div>
+                    <div class="audio-info">
+                        <div class="now-playing">♪ Now Playing</div>
+                        <div class="audio-title">Contact</div>
+                        <div class="progress-bar" onclick="seekAudio(event, 'audio5')">
+                            <div class="progress" id="progress5"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="audio-controls">
+                    <button class="control-btn play-pause" onclick="toggleAudio('audio5', 5)">
+                        <span id="playIcon5">▶</span>
+                    </button>
+                    <div class="volume-control">
+                        <span>🔊</span>
+                        <input type="range" class="volume-slider" min="0" max="100" value="70" 
+                               onchange="changeVolume('audio5', this.value)">
+                    </div>
+                </div>
+            </div>
+            <audio id="audio5" loop></audio>
+
+            <div class="lyric-paper">
+                <div class="lyric-content">
+                    <h2>Let's Connect!</h2>
+                    <div class="contact-container">
+                        <a href="https://wa.me/6281393124867" target="_blank" class="contact-link">
+                            <div class="contact-icon">📱</div>
+                            <div class="contact-label">WhatsApp</div>
+                        </a>
+                        <a href="https://www.instagram.com/smtbtaryan/" target="_blank" class="contact-link">
+                            <div class="contact-icon">📸</div>
+                            <div class="contact-label">Instagram</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Audio files from Vocaroo
+        const audioFiles = {
+            'audio1': 'Tate McRae - Just Keep Watching (From F1 The Movie) (Official Video).mp3',  // Who is Behind This
+            'audio2': 'HIVI! - Jatuh, Bangkit Kembali! (Official Audio).mp3',  // Learning Journey
+            'audio3': 'Ariana Grande - twilight zone (Official Lyric Video) [x1XIJM6spaE].mp3',  // Future Dreams
+            'audio4': '_What It Sounds Like _ _ Official Song Clip _ KPop Demon Hunters _ Sony Animation [TbMEMCvFbZk] copy.mp3',  // My Projects
+            'audio5': 'Kendrick Lamar, SZA - All The Stars.mp3'   // Contact
+        };
+
+        // Initialize audio sources
+        Object.keys(audioFiles).forEach(audioId => {
+            const audio = document.getElementById(audioId);
+            audio.src = audioFiles[audioId];
+            audio.volume = 0.7;
+        });
+
+        let currentAudio = null;
+        let currentModal = null;
+
+        function openModal(modalId) {
+            // Close previous modal if exists
+            if (currentModal) {
+                closeModal(currentModal);
+            }
+
+            const modal = document.getElementById(modalId);
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            currentModal = modalId;
+            
+            // Auto play audio
+            const modalNumber = modalId.replace('modal', '');
+            const audio = document.getElementById('audio' + modalNumber);
+            
+            // Stop all other audio
+            document.querySelectorAll('audio').forEach(a => {
+                if (a !== audio) {
+                    a.pause();
+                    a.currentTime = 0;
+                }
+            });
+
+            // Stop all vinyl animations
+            document.querySelectorAll('.mini-vinyl').forEach(v => {
+                v.classList.remove('playing');
+            });
+
+            // Play audio and animate vinyl
+            setTimeout(() => {
+                audio.play().catch(e => console.log('Autoplay prevented:', e));
+                document.getElementById('miniVinyl' + modalNumber).classList.add('playing');
+                document.getElementById('playIcon' + modalNumber).textContent = '⏸';
+            }, 300);
+            
+            currentAudio = audio;
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            
+            // Stop audio
+            const modalNumber = modalId.replace('modal', '');
+            const audio = document.getElementById('audio' + modalNumber);
+            audio.pause();
+            audio.currentTime = 0;
+            
+            // Stop vinyl animation
+            document.getElementById('miniVinyl' + modalNumber).classList.remove('playing');
+            document.getElementById('playIcon' + modalNumber).textContent = '▶';
+            
+            if (currentModal === modalId) {
+                currentModal = null;
+                currentAudio = null;
+            }
+        }
+
+        function toggleAudio(audioId, modalNumber) {
+            const audio = document.getElementById(audioId);
+            const playIcon = document.getElementById('playIcon' + modalNumber);
+            const miniVinyl = document.getElementById('miniVinyl' + modalNumber);
+            
+            if (audio.paused) {
+                audio.play();
+                playIcon.textContent = '⏸';
+                miniVinyl.classList.add('playing');
+            } else {
+                audio.pause();
+                playIcon.textContent = '▶';
+                miniVinyl.classList.remove('playing');
+            }
+        }
+
+        function changeVolume(audioId, value) {
+            const audio = document.getElementById(audioId);
+            audio.volume = value / 100;
+        }
+
+        function seekAudio(event, audioId) {
+            const audio = document.getElementById(audioId);
+            const progressBar = event.currentTarget;
+            const rect = progressBar.getBoundingClientRect();
+            const percent = (event.clientX - rect.left) / rect.width;
+            audio.currentTime = percent * audio.duration;
+        }
+
+        // Update progress bars
+        document.querySelectorAll('audio').forEach(audio => {
+            audio.addEventListener('timeupdate', function() {
+                const progress = (this.currentTime / this.duration) * 100;
+                const progressBar = document.getElementById('progress' + this.id.replace('audio', ''));
+                if (progressBar && !isNaN(progress)) {
+                    progressBar.style.width = progress + '%';
+                }
+            });
+
+            audio.addEventListener('ended', function() {
+                this.currentTime = 0;
+                this.play();
+            });
+        });
+
+        // Tab functionality
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+
+        // Close modal on outside click
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                const modalId = event.target.id;
+                closeModal(modalId);
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && currentModal) {
+                closeModal(currentModal);
+            }
+        });
+
+        // Prevent right-click on images (optional)
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
